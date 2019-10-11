@@ -27,8 +27,6 @@
     <sqlite4java.version>1.0.392</sqlite4java.version>
     <cucumber.version>1.2.5</cucumber.version>
     <aws.version>1.11.104</aws.version>
-    <scala.version>2.11.11</scala.version>
-    <scala.binary.version>2.11</scala.binary.version>
   </properties>
   <build>
     <plugins>
@@ -117,53 +115,7 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>net.alchim31.maven</groupId>
-        <artifactId>scala-maven-plugin</artifactId>
-        <version>3.2.2</version>
-        <configuration>
-          <scalaCompatVersion>${scala.binary.version}</scalaCompatVersion>
-          <charset>${project.build.sourceEncoding}</charset>
-          <jvmArgs>
-            <jvmArg>-DpackageLinkDefs=file://${project.build.directory}/packageLinkDefs.properties</jvmArg>
-          </jvmArgs>
-          <scalaVersion>${scala.version}</scalaVersion>
-          <recompileMode>incremental</recompileMode>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>compile</goal>
-              <goal>testCompile</goal>
-            </goals>
-            <configuration>
-              <recompileMode>incremental</recompileMode>
-              <source>${java.version}</source>
-              <target>${java.version}</target>
-              <args>
-                <arg>-unchecked</arg>
-                <arg>-deprecation</arg>
-                <arg>-Xlint</arg>
-                <arg>-feature</arg>
-                <arg>-Yno-adapted-args</arg>
-                <arg>-Ywarn-dead-code</arg>
-                <arg>-Ywarn-numeric-widen</arg>
-                <arg>-Ywarn-value-discard</arg>
-                <arg>-encoding</arg>
-                <arg>UTF-8</arg>
-                <arg>-Ywarn-value-discard</arg>
-                <arg>-Ywarn-unused-import</arg>
-                <arg>-Ywarn-inaccessible</arg>
-                <arg>-Ywarn-nullary-unit</arg>
-                <arg>-Ywarn-numeric-widen</arg>
-                <arg>-Ywarn-nullary-override</arg>
-                <arg>-language:implicitConversions</arg>
-                <arg>-Xfuture</arg>
-              </args>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+     
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -285,22 +237,6 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
-    <dependency>
-      <groupId>io.findify</groupId>
-      <artifactId>s3mock_${scala.binary.version}</artifactId>
-      <version>0.1.10</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.scala-lang</groupId>
-      <artifactId>scala-compiler</artifactId>
-      <version>${scala.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.scalatest</groupId>
-      <artifactId>scalatest_${scala.binary.version}</artifactId>
-      <version>3.0.3</version>
-    </dependency>
     <!-- JUnit. -->
     <dependency>
       <groupId>junit</groupId>
